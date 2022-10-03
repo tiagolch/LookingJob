@@ -12,10 +12,14 @@ class CompaniesAdmin(admin.ModelAdmin):
     list_display = [
         'name',
         'position',
-        'contact',
-        'email',
-        'submition_date',
         'interview_date',
         'aplication_status',
+        'link',
+        'active',
+    ]
+    list_filter = [
+        'position',
+        'aplication_status',
+        'interview_date',
         'active',
     ]
