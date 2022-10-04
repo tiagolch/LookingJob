@@ -25,10 +25,15 @@ class Companies(Base):
 
     name = models.CharField( max_length=150, verbose_name='Company')
     position = models.CharField(max_length=100, help_text='Sobre a posição da vaga')
-    contact = models.CharField(max_length=100, verbose_name='Contact Name')
+    contact = models.CharField(
+        max_length=100, 
+        verbose_name='Contact Name', 
+        blank=True, 
+        null=True
+    )
     email = models.EmailField(blank=True)
     submition_date = models.DateField(default=date.today(), blank=True)
-    interview_date = models.DateField( 
+    interview_date = models.DateTimeField( 
         blank=True, 
         null=True,
         help_text='Data da entrevista'
