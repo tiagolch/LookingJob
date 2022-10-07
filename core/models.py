@@ -14,6 +14,16 @@ class Base(models.Model):
         return self.updated_at.strftime('%d/%m/%Y %H:%M') 
 
 
+class Documents(Base):
+    document = models.CharField(max_length=150, blank=True)
+
+    def __str__(self) -> str:
+        return self.document
+
+    class Meta:
+        verbose_name_plural = 'Documents'
+
+
 class Companies(Base):
     APLICATION_STATUS_CHOICES = [
         ('AGUARDANDO_CONTATO', 'AGUARDANDO CONTATO'),
@@ -39,7 +49,7 @@ class Companies(Base):
         help_text='Data da entrevista'
     )
     document_send = models.ManyToManyField(
-        'Documents', 
+        Documents, 
         related_name="documents_send", 
         blank=True,
         null=True       
@@ -61,14 +71,7 @@ class Companies(Base):
         verbose_name_plural = 'Companies'
 
 
-class Documents(Base):
-    document = models.CharField(max_length=150, blank=True)
 
-    def __str__(self) -> str:
-        return self.document
-
-    class Meta:
-        verbose_name_plural = 'Documents'
 
 
 
