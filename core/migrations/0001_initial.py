@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 ('active', models.BooleanField(default=True)),
                 ('link', models.CharField(blank=True, max_length=500, null=True)),
                 ('obs', models.TextField(blank=True, max_length=1000, null=True)),
-                ('document_send', models.ManyToManyField(blank=True, null=True, related_name='documents_send', to='core.Documents')),
+                ('document_send', models.ManyToManyField(blank=True, null=True, related_name='documents_send', to='core.documents')),
             ],
             options={
                 'verbose_name': 'Company',
