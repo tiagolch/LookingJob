@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 from datetime import datetime
+from django.contrib.auth.models import User
 
 
 class Base(models.Model):
@@ -33,6 +34,7 @@ class Companies(Base):
         ('ACEITO', 'ACEITO'),
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField( max_length=150, verbose_name='Company')
     position = models.CharField(max_length=100, help_text='Sobre a posição da vaga')
     contact = models.CharField(
@@ -60,7 +62,7 @@ class Companies(Base):
         default='AGUARDANDO_CONTATO'
     )
     active = models.BooleanField(default=True)
-    link = models.CharField(max_length=500, blank=True, null=True)
+    link = models.URLField(max_length=500, blank=True, null=True)
     obs = models.TextField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
