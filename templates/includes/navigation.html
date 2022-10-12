@@ -1,0 +1,20 @@
+
+{% block nav %}
+  
+  {% if user.is_authenticated %}
+
+    <div>
+      <a class="nav-link" href="{% url 'admin:index' %}">
+        <button type="submit" class="btn btn-outline-info btn-block">Administração</button>
+      </a>
+      <a class="nav-link" href="{% url 'list_subscriptions' %}">
+        <button type="submit" class="btn btn-outline-info btn-block">Lista de Inscrições</button>
+      </a>
+      <a class="nav-link" href="{% url 'logout' %}">
+        <button type="submit" class="btn btn-outline-info btn-block">logout</button>
+      </a>
+    </div>
+
+  {% endif %}
+
+{% endblock %}
