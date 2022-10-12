@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+
+
+{% block title %}Incrições{% endblock title %}
+
+
+{% block content %}
+
+    <section class="container-fluid margin">
+        <div class="table-responsive-lg">
+
+            <table class="table table-xl table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Vaga</th>
+                        <th scope="col">Data da entrevista</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if data %}
+                        {% for item in data %}
+                            <tr>
+                                <th scope="row"><a href="{% url 'edit_subscription' item.id %}">{{ item.name }}</a></th>
+                                <td>{{ item.position }}</td>
+                                <td>{{ item.internview_date }}</td>
+                                <td>{{ item.aplication_status }}</td>
+                                <td>
+                                    <a type="button" class="btn btn-warning" href="{% url 'edit_subscription' item.id %}">Alterar</a>
+                                    <a type="button" class="btn btn-danger" href="{% url 'delete_subscription' item.id %}">Deletar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+
+        </div>  
+    </section>
+
+{% endblock content %}

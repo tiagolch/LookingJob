@@ -1,0 +1,16 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_tags %}
+
+  {% block title %}Alterar Inscrição{% endblock title %}
+  
+  {% block content %}
+
+    <div class="container">
+      <h3 class="text-center">Editar Inscrição</h3> 
+      <form method="POST"> {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary">Alterar</button>
+      </form>
+    </div>
+  
+  {% endblock content %}
