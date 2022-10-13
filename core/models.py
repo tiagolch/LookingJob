@@ -35,33 +35,43 @@ class Companies(Base):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField( max_length=150, verbose_name='Company')
-    position = models.CharField(max_length=100, help_text='Sobre a posição da vaga')
+    name = models.CharField( max_length=150, verbose_name='Empresa')
+    position = models.CharField(
+        max_length=100, 
+        help_text='Sobre a posição da vaga', 
+        verbose_name='Vaga'
+    )
     contact = models.CharField(
         max_length=100, 
-        verbose_name='Contact Name', 
+        verbose_name='Recrutador', 
         blank=True, 
         null=True
     )
     email = models.EmailField(blank=True)
-    submition_date = models.DateField(default=date.today(), blank=True)
+    submition_date = models.DateField(
+        default=date.today(), 
+        blank=True, 
+        verbose_name='Data de inscrição'
+    )
     interview_date = models.DateTimeField( 
         blank=True, 
         null=True,
-        help_text='Data da entrevista'
+        verbose_name='Data da entrevista'
     )
     document_send = models.ManyToManyField(
         Documents, 
         related_name="documents_send", 
         blank=True,
-        null=True       
+        null=True,
+        verbose_name='Documento(s) enviado'    
     )
     aplication_status = models.CharField(
         max_length=20, 
         choices=APLICATION_STATUS_CHOICES, 
-        default='AGUARDANDO_CONTATO'
+        default='AGUARDANDO_CONTATO',
+        verbose_name='Status'
     )
-    active = models.BooleanField(default=True)
+    active = models.BooleanField(default=True,verbose_name='Ativo')
     link = models.URLField(max_length=500, blank=True, null=True)
     obs = models.TextField(max_length=1000, blank=True, null=True)
 
@@ -69,6 +79,7 @@ class Companies(Base):
         return f'{self.name} - {self.position}'
 
     class Meta:
+        ordering = ["-updated_at"]
         verbose_name = 'Company'
         verbose_name_plural = 'Companies'
 

@@ -15,6 +15,14 @@ def list_subscriptions(request):
 
 
 @login_required
+def archived_subscriptions(request):
+    user = request.user
+    data = Companies.objects.filter(user=user).filter(active=False)
+    context = {"data": data }
+    return render(request, "core/archived_subscription.html", context)   
+
+
+@login_required
 def new_subscription(request):
     form = CompaniesForms(request.user, request.POST or None)
     if form.is_valid():
@@ -38,8 +46,18 @@ def edit_subscription(request, pk):
 
 
 @login_required
-def archive_subscription(request, pk):
+def archive_or_active_subscription(request, pk):
     data = get_object_or_404(Companies, pk=pk)
-    data.active = False
+    if data.active == True:
+        data.active = False
+    else:
+        data.active = True
     data.save()
     return redirect('/list_subscriptions/')
+
+
+@login_required
+def delete_subscription(request, pk):
+    data = get_object_or_404(Companies, pk=pk)
+    data.delete()
+    return redirect('/archived_subscriptions/')

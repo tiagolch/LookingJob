@@ -1,7 +1,7 @@
 {% extends 'layouts/base.html' %}
 
 
-{% block title %}Incrições{% endblock title %}
+{% block title %}Incrições Arquivadas{% endblock title %}
 
 
 {% block content %}
@@ -16,7 +16,7 @@
                         <th scope="col">Vaga</th>
                         <th scope="col">Data da entrevista</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Arquivar</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +28,8 @@
                                 <td>{% if item.interview_date %}{{ item.interview_date }}{% endif %}</td>
                                 <td>{{ item.aplication_status }}</td>
                                 <td>
-                                    <a type="button" class="btn btn-outline-warning" href="{% url 'archive_or_active_subscription' item.id %}">Arquivar</a>
+                                    <a type="button" class="btn btn-outline-success" href="{% url 'archive_or_active_subscription' item.id %}">Ativar</a>
+                                    <a type="button" class="btn btn-outline-danger" href="{% url 'delete_subscription' item.id %}">Deletar</a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -37,11 +38,6 @@
             </table>
 
         </div>  
-    </section>
-    <section class="container-fluid margin">
-        <div>
-            <a type="button" href="{% url 'archived_subscriptions'%}" class="btn btn-outline-warning">Inscrições Arquivadas</a>
-        </div>
     </section>
 
 {% endblock content %}
