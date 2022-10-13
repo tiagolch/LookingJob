@@ -1,12 +1,12 @@
 {% extends 'layouts/base.html' %} 
 {% load crispy_forms_tags %} 
+{% block title %} Login {% endblock title %}
 {% block content %}
     <br>
     <div class="container d-flex justify-content-center">
-        <div class="card">
-            <div class="card-body">
-                <div class="">
-                    <h1 align="center">Login</h1>
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header text-primary h2 d-flex justify-content-center">Login</div>
+                <div class="card-body text-primary">
                         <form method="post">
                             {% csrf_token %} 
                             {{ form|crispy }}
