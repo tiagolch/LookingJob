@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from datetime import date
 from datetime import datetime
@@ -16,7 +17,7 @@ class Base(models.Model):
 
 
 class Documents(Base):
-    document = models.CharField(max_length=150, blank=True)
+    document = models.CharField(max_length=150, blank=True, verbose_name='Documento(s)')
 
     def __str__(self) -> str:
         return self.document

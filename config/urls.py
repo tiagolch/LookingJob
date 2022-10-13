@@ -12,7 +12,8 @@ from core.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('account/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),
     path('', new_subscription, name='new_subscription'),
     path('list_subscriptions/', list_subscriptions, name='list_subscriptions'),
     path('archived_subscriptions/', archived_subscriptions, name='archived_subscriptions'),
