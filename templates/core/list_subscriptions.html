@@ -16,7 +16,7 @@
                         <th scope="col">Vaga</th>
                         <th scope="col">Data da entrevista</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Ação</th>
+                        <th scope="col">Arquivar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,8 +28,7 @@
                                 <td>{{ item.internview_date }}</td>
                                 <td>{{ item.aplication_status }}</td>
                                 <td>
-                                    <a type="button" class="btn btn-outline-warning" href="{% url 'edit_subscription' item.id %}">Alterar</a>
-                                    <a type="button" class="btn btn-outline-danger" href="{% url 'delete_subscription' item.id %}">Deletar</a>
+                                    <a type="button" class="btn btn-outline-danger" href="{% url 'archive_subscription' item.id %}">Arquivar</a>
                                 </td>
                             </tr>
                         {% endfor %}

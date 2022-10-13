@@ -9,7 +9,7 @@ from .forms import CompaniesForms
 @login_required
 def list_subscriptions(request):
     user = request.user
-    data = Companies.objects.filter(user=user)
+    data = Companies.objects.filter(user=user).filter(active=True)
     context = {"data": data }
     return render(request, "core/list_subscriptions.html", context)
 
@@ -38,7 +38,8 @@ def edit_subscription(request, pk):
 
 
 @login_required
-def delete_subscription(request, pk):
+def archive_subscription(request, pk):
     data = get_object_or_404(Companies, pk=pk)
-    data.delete()
+    data.active = False
+    data.save()
     return redirect('/list_subscriptions/')
