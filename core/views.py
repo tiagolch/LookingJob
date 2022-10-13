@@ -47,17 +47,21 @@ def edit_subscription(request, pk):
 
 @login_required
 def archive_or_active_subscription(request, pk):
+    user = request.user
     data = get_object_or_404(Companies, pk=pk)
-    if data.active == True:
-        data.active = False
-    else:
-        data.active = True
+    if data.user == user:
+        if data.active == True:
+            data.active = False
+        else:
+            data.active = True
     data.save()
     return redirect('/list_subscriptions/')
 
 
 @login_required
 def delete_subscription(request, pk):
+    user = request.user
     data = get_object_or_404(Companies, pk=pk)
-    data.delete()
+    if data.user == user:
+        data.delete()
     return redirect('/archived_subscriptions/')
