@@ -4,7 +4,6 @@ from django import forms
 
 
 class CompaniesForms(forms.ModelForm):
-   
     class Meta:
         model = Companies
         fields = [

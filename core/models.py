@@ -27,10 +27,10 @@ class Documents(Base):
 
 class Companies(Base):
     APLICATION_STATUS_CHOICES = [
-        ('AGUARDANDO_CONTATO', 'AGUARDANDO CONTATO'),
+        ('AGUARDANDO CONTATO', 'AGUARDANDO CONTATO'),
         ('REJEITADO', 'REJEITADO'),
-        ('EM_ANALISE', 'EM ANALISE'),
-        ('PROXIMA_ENTREVISTA', 'PROXIMA ENTREVISTA'),
+        ('EM ANALISE', 'EM ANALISE'),
+        ('PROXIMA ENTREVISTA', 'PROXIMA ENTREVISTA'),
         ('ACEITO', 'ACEITO'),
     ]
 
