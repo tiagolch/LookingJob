@@ -16,7 +16,6 @@ class CompaniesForms(forms.ModelForm):
             'interview_date',
             'document_send',
             'aplication_status',
-            'active',
             'link',
             'obs',
         ]
