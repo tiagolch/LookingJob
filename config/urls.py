@@ -12,7 +12,7 @@ from core.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('account/', include('django.contrib.auth.urls')),
+    # path('account/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
     path('', new_subscription, name='new_subscription'),
     path('list_subscriptions/', list_subscriptions, name='list_subscriptions'),
