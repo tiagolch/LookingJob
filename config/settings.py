@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'bootstrap4',
+    'rest_framework',
     # Apps
     'core',
 ]
