@@ -1,6 +1,8 @@
 # LookingJob
 
-Este projeto foi criado pensando em centralizar as inscrições que são feitas em diversas plataformas ou meios.
+This project was created with the idea of centralizing the registrations that are made in several platforms or media.
+
+## [Heroku](https://looking-for-work.herokuapp.com/) 
 
 ## Requirements
 
