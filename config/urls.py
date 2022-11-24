@@ -1,14 +1,21 @@
 
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from core.api.viewsets import DocumentViewset, CompanyViewset
 from core.views import (
-    edit_subscription, 
-    new_subscription, 
-    list_subscriptions, 
-    archive_or_active_subscription, 
-    archived_subscriptions, 
+    edit_subscription,
+    new_subscription,
+    list_subscriptions,
+    archive_or_active_subscription,
+    archived_subscriptions,
     delete_subscription,
 )
+
+routers = routers.DefaultRouter()
+
+routers.register(r'document', DocumentViewset, basename='document')
+routers.register(r'company', CompanyViewset, basename='company')
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -16,8 +23,24 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', new_subscription, name='new_subscription'),
     path('list_subscriptions/', list_subscriptions, name='list_subscriptions'),
-    path('archived_subscriptions/', archived_subscriptions, name='archived_subscriptions'),
-    path('edit_subscription/<int:pk>/', edit_subscription, name='edit_subscription'),
-    path('archive_or_active_subscription/<int:pk>/', archive_or_active_subscription, name='archive_or_active_subscription'),
-    path('delete_subscription/<int:pk>/', delete_subscription, name='delete_subscription'),
+    path(
+        'archived_subscriptions/',
+        archived_subscriptions,
+        name='archived_subscriptions'
+    ),
+    path('edit_subscription/<int:pk>/',
+         edit_subscription, 
+         name='edit_subscription'
+    ),
+    path(
+        'archive_or_active_subscription/<int:pk>/',
+        archive_or_active_subscription,
+        name='archive_or_active_subscription'
+    ),
+    path(
+        'delete_subscription/<int:pk>/',
+        delete_subscription,
+        name='delete_subscription'
+    ),
+    path('api/', include(routers.urls)),
 ]
