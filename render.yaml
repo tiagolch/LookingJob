@@ -1,0 +1,3 @@
+services:
+    buildCommand: "./build.sh"
+    startCommand: "web: gunicorn config.wsgi --log-file -"
