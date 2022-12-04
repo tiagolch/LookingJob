@@ -8,7 +8,7 @@ cryptography==38.0.1
 defusedxml==0.7.1
 dj-database-url==1.0.0
 dj-static==0.0.6
-Django==4.1.1
+Django==3.2.16
 django-allauth==0.51.0
 django-bootstrap4==22.2
 django-crispy-forms==1.14.0
