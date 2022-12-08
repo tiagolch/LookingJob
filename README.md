@@ -1,8 +1,9 @@
-# LookingJob
+# Looking For Work
 
 This project was created with the idea of centralizing the registrations that are made in several platforms or media.
 
-## [Heroku](https://looking-for-work.herokuapp.com/) 
+## [Document](https://docs.google.com/document/d/18h4D6WUPSBONAcJbwqG_C5Qn1sz9_37yDYPu-3hkyLI/edit?usp=sharing)
+## [Site](https://lookingforwork.onrender.com/) 
 
 ## Requirements
 
@@ -12,7 +13,7 @@ This project was created with the idea of centralizing the registrations that ar
 ## Installation
 
     python -m venv venv
-    source venv/bin/activate or (Windows) source venv\script\activate
+    source venv/bin/activate or (Windows) source venv\scripts\activate
 
     pip install -r requirements.txt
 
