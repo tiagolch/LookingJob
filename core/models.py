@@ -72,7 +72,6 @@ class Companies(Base):
     )
     active = models.BooleanField(default=True,verbose_name='Ativo')
     link = models.URLField(max_length=500, blank=True, null=True)
-    process = models.ForeignKey(Processes, on_delete=models.CASCADE)
     obs = models.TextField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
