@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Companies, Documents
+from .models import AppliedCompanies, Documents, Interviews, Processes
 
 
 @admin.register(Documents)
@@ -7,19 +7,19 @@ class DocumentsAdmin(admin.ModelAdmin):
     list_display = ['documents']
 
 
-@admin.register(Companies)
-class CompaniesAdmin(admin.ModelAdmin):
+@admin.register(AppliedCompanies)
+class AppliedCompaniesAdmin(admin.ModelAdmin):
     list_display = [
         'name',
         'position',
-        'interview_date',
-        'aplication_status',
         'link',
         'active',
     ]
     list_filter = [
         'position',
-        'aplication_status',
-        'interview_date',
         'active',
     ]
+
+
+    admin.site.register(Interviews)
+    admin.site.register(Processes)

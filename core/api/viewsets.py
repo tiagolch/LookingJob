@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from .serializers import DocumentSerializer, CompanieSerializer
-from core.models import Documents, Companies
+from .serializers import DocumentSerializer, AppliedCompanieSerializer
+from core.models import Documents, AppliedCompanies
 
 
 class DocumentViewset(ModelViewSet):
@@ -8,7 +8,7 @@ class DocumentViewset(ModelViewSet):
     serializer_class = DocumentSerializer
 
 
-class CompanyViewset(ModelViewSet):
-    queryset = Companies.objects.all()
-    serializer_class = CompanieSerializer
+class AppliedCompanyViewset(ModelViewSet):
+    queryset = AppliedCompanies.objects.all()
+    serializer_class = AppliedCompanieSerializer
 
