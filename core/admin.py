@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Companies, Documents, Interviews, Processes
+from .models import Companies, Documents
 
 
 @admin.register(Documents)
@@ -23,7 +23,3 @@ class CompaniesAdmin(admin.ModelAdmin):
         'aplication_status',
         'active',
     ]
-
-
-    admin.site.register(Interviews)
-    admin.site.register(Processes)
