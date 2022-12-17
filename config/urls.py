@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from core.api.viewsets import DocumentViewset, AppliedCompanyViewset
+from core.api.viewsets import DocumentViewset, CompanyViewset
 from core.views import (
     edit_subscription,
     new_subscription,
@@ -15,7 +15,7 @@ from core.views import (
 routers = routers.DefaultRouter()
 
 routers.register(r'document', DocumentViewset, basename='document')
-routers.register(r'company', AppliedCompanyViewset, basename='company')
+routers.register(r'company', CompanyViewset, basename='company')
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),

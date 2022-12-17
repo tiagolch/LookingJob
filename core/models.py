@@ -24,33 +24,14 @@ class Documents(Base):
         verbose_name_plural = 'Documents'
 
 
-class Processes(Base):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    describe = models.CharField('Process', max_length=100)
-    active = models.BooleanField(default=True,verbose_name='Ativo')
-    # applied_company = models.ForeignKey('AppliedCompanies', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.describe
-
-    class Meta:
-        verbose_name = 'Process'
-        verbose_name_plural = 'Processes'
-
-
-class Interviews(models.Model):
-    interview_date = models.DateTimeField()
-    done = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.interview_date.strftime('%d/%m/%Y %H:%M') 
-
-    class Meta:
-        verbose_name = 'interview'
-        verbose_name_plural = 'interviews'
-
-
-class AppliedCompanies(Base):
+class Companies(Base):
+    APLICATION_STATUS_CHOICES = [
+        ('AGUARDANDO CONTATO', 'AGUARDANDO CONTATO'),
+        ('REJEITADO', 'REJEITADO'),
+        ('EM ANALISE', 'EM ANALISE'),
+        ('PROXIMA ENTREVISTA', 'PROXIMA ENTREVISTA'),
+        ('ACEITO', 'ACEITO'),
+    ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField( max_length=150, verbose_name='Empresa')
@@ -71,13 +52,23 @@ class AppliedCompanies(Base):
         blank=True, 
         verbose_name='Data de inscrição'
     )
-    interviews = models.ForeignKey(Interviews, on_delete=models.CASCADE, null=True, blank=True)
+    interview_date = models.DateTimeField( 
+        blank=True, 
+        null=True,
+        verbose_name='Data da entrevista'
+    )
     document_send = models.ManyToManyField(
         Documents, 
         related_name="documents_send", 
         blank=True,
         null=True,
         verbose_name='Documento(s) enviado'    
+    )
+    aplication_status = models.CharField(
+        max_length=20, 
+        choices=APLICATION_STATUS_CHOICES, 
+        default='AGUARDANDO_CONTATO',
+        verbose_name='Status'
     )
     active = models.BooleanField(default=True,verbose_name='Ativo')
     link = models.URLField(max_length=500, blank=True, null=True)
@@ -89,8 +80,8 @@ class AppliedCompanies(Base):
 
     class Meta:
         ordering = ["-updated_at"]
-        verbose_name = 'Applied Company'
-        verbose_name_plural = 'Applied Companies'
+        verbose_name = 'Company'
+        verbose_name_plural = 'Companies'
 
 
 

@@ -1,11 +1,11 @@
 from django.forms import HiddenInput
-from .models import AppliedCompanies, Documents, Processes
+from .models import Companies, Documents, Processes
 from django import forms
 
 
-class AppliedCompaniesForms(forms.ModelForm):
+class CompaniesForms(forms.ModelForm):
     class Meta:
-        model = AppliedCompanies
+        model = Companies
         fields = [
             'user',
             'name',
@@ -13,8 +13,9 @@ class AppliedCompaniesForms(forms.ModelForm):
             'contact',
             'email',
             'submition_date',
-            'interviews',
+            'interview_date',
             'document_send',
+            'aplication_status',
             'active',
             'link',
             'process',
@@ -26,7 +27,7 @@ class AppliedCompaniesForms(forms.ModelForm):
 
 
     def __init__(self, user=None, *args, **kwargs):
-        super(AppliedCompaniesForms, self).__init__(*args, **kwargs)
+        super(CompaniesForms, self).__init__(*args, **kwargs)
         if user and user.is_authenticated:
             self.initial['user'] = user
         else:

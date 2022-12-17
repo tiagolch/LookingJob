@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from core.models import Documents, AppliedCompanies
+from core.models import Documents, Companies
 
 class DocumentSerializer(ModelSerializer):
     class Meta:
@@ -7,7 +7,7 @@ class DocumentSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class AppliedCompanieSerializer(ModelSerializer):
+class CompanieSerializer(ModelSerializer):
     class Meta:
-        model = AppliedCompanies
+        model = Companies
         fields = '__all__'
