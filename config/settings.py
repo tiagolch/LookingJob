@@ -1,5 +1,6 @@
 
 
+from datetime import timedelta
 from email.policy import default
 from pathlib import Path
 from decouple import config, Csv
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'bootstrap4',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_spectacular',
     # Apps
     'core',
 ]
@@ -165,3 +168,30 @@ LOGOUT_REDIRECT_URL = 'account_login'
 LOGIN_REDIRECT_URL = 'new_subscription'
 
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=180),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1)
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Looking For Work',
+    'DESCRIPTION': 'API com os endpoints e a documentação do projeto LFW',
+    'VERSION': '1.0.0',
+    # OTHER SETTINGS
+}
