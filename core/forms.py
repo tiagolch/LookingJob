@@ -18,7 +18,6 @@ class CompaniesForms(forms.ModelForm):
             'aplication_status',
             'active',
             'link',
-            'process',
             'obs',
         ]
         widgets = {
