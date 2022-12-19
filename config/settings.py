@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'bootstrap4',
     'rest_framework',
+    'django_extensions',
+    'ninja_jwt',
     # Apps
     'core',
 ]
@@ -164,4 +166,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGOUT_REDIRECT_URL = 'account_login'
 LOGIN_REDIRECT_URL = 'new_subscription'
 
-
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

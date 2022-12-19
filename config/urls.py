@@ -11,6 +11,7 @@ from core.views import (
     archived_subscriptions,
     delete_subscription,
 )
+from core.api_ninja.api import api
 
 routers = routers.DefaultRouter()
 
@@ -43,4 +44,5 @@ urlpatterns = [
         name='delete_subscription'
     ),
     path('api/', include(routers.urls)),
+    path("api_ninja/", api.urls),
 ]
