@@ -15,6 +15,7 @@ class Base(models.Model):
 
 
 class Documents(Base):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     document = models.CharField(max_length=150, blank=True, verbose_name='Documento(s)')
 
     def __str__(self) -> str:
@@ -25,10 +26,9 @@ class Documents(Base):
 
 
 class Processes(Base):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     describe = models.CharField('Process', max_length=100)
     active = models.BooleanField(default=True,verbose_name='Ativo')
-    # applied_company = models.ForeignKey('AppliedCompanies', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.describe
