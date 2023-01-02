@@ -130,3 +130,6 @@ dmypy.json
 .pyre/
 
 staticfiles
+Procfile
+render.yaml
+build.sh
